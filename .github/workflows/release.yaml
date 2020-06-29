@@ -11,6 +11,9 @@ jobs:
     name: Upload Release Asset
     runs-on: ubuntu-latest
     steps:
+      - name: Install LuaJIT
+        run: |
+          sudo apt-get install -y luajit
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Build project # This would actually build your project, using zip for an example artifact
