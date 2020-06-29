@@ -11,7 +11,7 @@ do
 
   # Execute the handler function from the script
   echo "USING LUAJIT"
-  /opt/runtime/luajit /opt/runtime/run.out "$LAMBDA_TASK_ROOT" "$_HANDLER" "$EVENT_DATA"
+  /opt/runtime/luajit /opt/runtime/run.lua "$LAMBDA_TASK_ROOT" "$_HANDLER" "$EVENT_DATA"
 
   if [ -f /tmp/lua_result.log ]; then
     RESPONSE=$(</tmp/lua_result.log)
