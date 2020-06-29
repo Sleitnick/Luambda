@@ -1,4 +1,5 @@
 ![Lint](https://github.com/Sleitnick/Luambda/workflows/Lint/badge.svg)
+![Release](https://github.com/Sleitnick/Luambda/workflows/Release/badge.svg)
 
 ![logo](imgs/logo_128.png)
 
