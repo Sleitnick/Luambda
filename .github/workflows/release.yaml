@@ -15,8 +15,8 @@ on:
       uses: actions/checkout@v2
     - name: Build project # This would actually build your project, using zip for an example artifact
       run: |
-      chmod +x build.sh compile.sh
-      ./build.sh
+        chmod +x build.sh compile.sh
+        ./build.sh
 
     - name: Create Release
       id: create_release
