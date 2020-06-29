@@ -14,6 +14,7 @@
 local FILENAME_OUT = "/tmp/lua_result.log"
 local FILENAME_ERR = "/tmp/lua_result_err.log"
 
+-- Capture command line args:
 local root, handler, eventJson = ...
 
 -- Add runtime to package path:
@@ -24,29 +25,35 @@ local json = require("json")
 package.path = root .. "/?.lua;" .. package.path
 
 local function writeFile(filename, contents)
-	local file, err = io.open(filename, "w")
+	local file = io.open(filename, "w")
 	file:write(contents)
 	file:close()
 end
 
-local function runModule()
-	-- Run in protected mode
+local function runUserTask()
+	-- Parse module and function name from handler:
 	local dotIndex = handler:find("%.")
 	local moduleName = handler:sub(1, dotIndex - 1)
 	local funcName = handler:sub(dotIndex + 1)
 	local event = json.decode(eventJson)
+	-- Load and execute module:
 	local module = require(moduleName)
 	local result = module[funcName](event)
 	return json.encode(result)
 end
 
-local success, result = pcall(runModule)
-if (success) then
-	writeFile(FILENAME_OUT, result)
-else
-	local resultErr = json.encode({
-		errorMessage = (result == nil and "UNKNOWN" or tostring(result));
-		errorType = "LuaError";
-	})
-	writeFile(FILENAME_ERR, resultErr)
+local function run()
+	-- Run the user task in protected mode:
+	local success, result = pcall(runUserTask)
+	if (success) then
+		writeFile(FILENAME_OUT, result)
+	else
+		local resultErr = json.encode({
+			errorMessage = (result == nil and "UNKNOWN" or tostring(result));
+			errorType = "LuaError";
+		})
+		writeFile(FILENAME_ERR, resultErr)
+	end
 end
+
+run()
