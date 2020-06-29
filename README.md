@@ -1,3 +1,5 @@
+![Lint](https://github.com/Sleitnick/Luambda/workflows/Lint/badge.svg)
+
 ![logo](imgs/logo_128.png)
 
 # Luambda
