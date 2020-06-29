@@ -7,6 +7,10 @@ Lua runtime for AWS Lambda.
 ## Create Layer
 
 ```sh
+# Executable permissions
+chmod +x bootstrap
+chmod +x runtime/luajit
+
 # Package and upload to S3:
 $ ./package.json
 $ aws s3 cp lambda.zip s3://<upload_bucket><upload_prefix>
@@ -48,4 +52,5 @@ For instance, you might change `/opt/runtime/luajit` in the `bootstrap` file to 
 
 The following third-party dependencies are used:
 
+- [LuaJIT](https://luajit.org/)
 - [`json.lua`](https://github.com/rxi/json.lua) [MIT License]
