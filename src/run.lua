@@ -18,7 +18,7 @@ local FILENAME_ERR = "/tmp/lua_result_err.log"
 local root, handler, eventJson = unpack({...})
 
 -- Add runtime to package path:
-package.path = "/opt/runtime/?.lua;" .. package.path
+package.path = "/opt/runtime/?.lua;/opt/runtime/?.out;" .. package.path
 local json = require("json")
 
 -- Add task root to package path:
