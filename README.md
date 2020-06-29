@@ -15,6 +15,9 @@ Luambda is a [Lambda Layer](https://docs.aws.amazon.com/lambda/latest/dg/configu
 $ git clone https://github.com/Sleitnick/Luambda
 $ cd Luambda
 
+# Executable permissions
+$ chmod +x build.sh compile.sh
+
 # Package and upload to S3
 $ ./build.json
 $ aws s3 cp dist/luambda.zip s3://<upload_bucket>/<optional_path>/luambda.zip
