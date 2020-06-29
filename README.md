@@ -13,7 +13,7 @@ Luambda is a [Lambda Layer](https://docs.aws.amazon.com/lambda/latest/dg/configu
 
 From the latest release:
 
-1. Download `luambda.zip` from the [latest release](https://github.com/Sleitnick/Luambda/releases/latest)
+1. Download [`luambda.zip`](https://github.com/Sleitnick/Luambda/releases/latest/download/luambda.zip) from the latest release
 1. Go to the [Create Layer](https://console.aws.amazon.com/lambda/home?region=us-east-1#/create/layer) page on the AWS console
 1. Name the layer `Luambda`
 1. Click the Upload button and select the `luambda.zip` file from the unzipped release
