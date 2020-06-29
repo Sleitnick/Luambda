@@ -11,7 +11,7 @@ Luambda is a [Lambda Layer](https://docs.aws.amazon.com/lambda/latest/dg/configu
 
 ## Create Layer
 
-From the latest release:
+### Option 1 - From the latest release:
 
 1. Download [`luambda.zip`](https://github.com/Sleitnick/Luambda/releases/latest/download/luambda.zip) from the latest release
 1. Go to the [Create Layer](https://console.aws.amazon.com/lambda/home?region=us-east-1#/create/layer) page on the AWS console
@@ -21,7 +21,13 @@ From the latest release:
 1. Under license, write MIT
 1. Click the Create button
 
-For a full custom build, execute the following commands:
+### Option 2 - From latest release & use CloudFormation:
+
+1. Download [`luambda.zip`](https://github.com/Sleitnick/Luambda/releases/latest/download/luambda.zip) from the latest release
+1. Upload the `luambda.zip` file to S3
+1. Use the [`luambda.yaml`](https://github.com/Sleitnick/Luambda/blob/master/aws/luambda.yaml) CF template to create the new stack
+
+### Option 3 - For a full custom build, execute the following commands:
 
 ```sh
 # Clone repo
@@ -39,7 +45,7 @@ $ aws s3 cp dist/luambda.zip s3://<upload_bucket>/<optional_path>/luambda.zip
 $ aws cloudformation create-stack --stack-name LuambdaLayer --template-body file://aws/luambda.yaml --paramters ParameterKey=S3Bucket,ParameterValue=<s3_bucket> ParameterKey=S3Key,ParameterValue=<s3_key>
 ```
 
-**Warning for Windows users:** The zip file created from the `build.sh` script may not work properly on Windows, because it will strip the permissions from the files, which will lead to errors when attempting to execute the lambda.
+**Warning for Windows users using option 3:** The zip file created from the `build.sh` script may not work properly on Windows, because it will strip the permissions from the files, which will lead to errors when attempting to execute the lambda.
 
 ## Use Layer
 
