@@ -59,5 +59,5 @@ For instance, you might change `/opt/runtime/luajit` in the `bootstrap` file to 
 
 The following third-party dependencies are used:
 
-- [LuaJIT](https://luajit.org/)
-- [`json.lua`](https://github.com/rxi/json.lua) [MIT License]
+- [LuaJIT](https://luajit.org/) [MIT license]
+- [json.lua](https://github.com/rxi/json.lua) [MIT license]
