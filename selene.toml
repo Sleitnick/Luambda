@@ -1,9 +1,5 @@
-std = "lua51"
+std = "lua51+luambda"
 
 [rules]
 parenthese_conditions = "allow"
 multiple_statements = "allow"
-
-[globals]
-["..."]
-property = true
