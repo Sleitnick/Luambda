@@ -18,11 +18,13 @@ do
 
     # Send the response
     curl -X POST "http://${AWS_LAMBDA_RUNTIME_API}/2018-06-01/runtime/invocation/$REQUEST_ID/response"  -d "$RESPONSE"
+    rm /tmp/lua_result.log
 
   else
     # Handle error
     RESPONSE_ERR=$(</tmp/lua_result_err.log)
     curl -X POST "http://${AWS_LAMBDA_RUNTIME_API}/2018-06-01/runtime/invocation/$REQUEST_ID/error"  -d "$RESPONSE_ERR"
+    rm /tmp/lua_result_err.log
   fi
 
 done

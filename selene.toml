@@ -1,0 +1,9 @@
+std = "lua51"
+
+[rules]
+parenthese_conditions = "allow"
+multiple_statements = "allow"
+
+[globals]
+["..."]
+property = true

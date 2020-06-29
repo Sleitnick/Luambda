@@ -1,4 +1,4 @@
-lambda.zip
+dist/
 deploy_personal.sh
 test.lua
 update_layer_version.py

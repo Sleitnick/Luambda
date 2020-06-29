@@ -4,20 +4,25 @@
 
 Lua runtime for AWS Lambda.
 
+Luambda is a [Lambda Layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) that allows developers to write Lambdas using Lua. To get started, read through the rest of this readme.
+
 ## Create Layer
 
 ```sh
+# Clone repo
+$ git clone https://github.com/Sleitnick/Luambda
+$ cd Luambda
+
 # Executable permissions
-chmod +x bootstrap
-chmod +x runtime/luajit
+$ chmod +x bootstrap
+$ chmod +x runtime/luajit
 
-# Package and upload to S3:
+# Package and upload to S3
 $ ./package.json
-$ aws s3 cp lambda.zip s3://<upload_bucket><upload_prefix>
+$ aws s3 cp dist/luambda.zip s3://<upload_bucket>/<optional_path>/luambda.zip
 
-# Create Lambda Layer:
-$ aws cloudformation package --template-file aws/luambda.yaml --s3-bucket <bucket> --s3-prefix <prefix> --output-template-file <output_file>
-$ aws cloudformation deploy --template-file <output_file> --s3-bucket <bucket> --s3-prefix <prefix> --stack-name LuambdaLayer --parameter-override S3Bucket=<upload_bucket> S3Key=<upload_prefix>
+# Create Lambda Layer
+$ aws cloudformation create-stack --stack-name LuambdaLayer --template-body file://aws/luambda.yaml --paramters ParameterKey=S3Bucket,ParameterValue=<s3_bucket> ParameterKey=S3Key,ParameterValue=<s3_key>
 ```
 
 ## Use Layer

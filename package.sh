@@ -1,5 +1,11 @@
 #!/bin/sh
 
-rm lambda.zip
-zip lambda.zip bootstrap runtime/**
-#aws lambda update-function-code --function-name lua_test --zip-file fileb://lambda.zip --profile personal_account
+if [ -f "dist/luambda.zip" ]; then
+	rm dist/luambda.zip
+fi
+
+if [ ! -d "dist" ]; then
+	mkdir dist
+fi
+
+zip dist/luambda.zip bootstrap runtime/**
