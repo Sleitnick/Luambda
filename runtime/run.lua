@@ -15,7 +15,7 @@ local FILENAME_OUT = "/tmp/lua_result.log"
 local FILENAME_ERR = "/tmp/lua_result_err.log"
 
 -- Capture command line args:
-local root, handler, eventJson = unpack(arg)
+local root, handler, eventJson = unpack({...})
 
 -- Add runtime to package path:
 package.path = "/opt/runtime/?.lua;" .. package.path
