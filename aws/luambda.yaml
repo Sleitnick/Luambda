@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Lua Lambda Runtime
+
+Parameters:
+  S3Bucket:
+    Type: String
+    Description: S3 Bucket for pulling content
+  S3Key:
+    Type: String
+    Description: S3 Key for pulling content
+
+Resources:
+  LayerVersion:
+    Type: AWS::Lambda::LayerVersion
+    Properties:
+      Description: Lua Lambda Runtime Layer
+      LayerName: Luambda
+      LicenseInfo: MIT
+      CompatibleRuntimes:
+        - provided
+      Content:
+        S3Bucket: !Ref S3Bucket
+        S3Key: !Ref S3Key
+
+Outputs:
+
+  LuambdaLayer:
+    Description: Lua Lambda Runtime Layer
+    Value: !Ref LayerVersion
+    Export:
+      Name: LuambdaLayer
