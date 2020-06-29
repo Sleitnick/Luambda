@@ -6,5 +6,6 @@ if [ ! -d dist/runtime ]; then
 fi
 
 for f in src/*.lua; do
-	luajit -b $f dist/runtime/`basename $f .lua`.out
+	#luajit -b $f dist/runtime/`basename $f .lua`.out
+	cp $f dist/runtime/`basename $f`
 done
